@@ -47,6 +47,10 @@ public class PlayerMoves{
 				currentIndex = currentIndex + 2;
 			}
 			/* TODO: validar */
+			// Letra F
+			// Que no sobren tiros
+			// QUe no falten tiros
+			// que los datos sean válidos ( 0-10 + X / F )
 			response.add(new Frame(subList));
 		}
 		
