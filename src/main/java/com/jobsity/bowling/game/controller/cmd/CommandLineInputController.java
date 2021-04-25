@@ -12,12 +12,16 @@ import org.springframework.stereotype.Component;
 
 import com.jobsity.bowling.game.controller.BowlingController;
 import com.jobsity.bowling.game.model.PlayerMoves;
+import com.jobsity.bowling.game.service.Printer;
 
 @Component
 public class CommandLineInputController {
 	
 	@Autowired
 	private BowlingController bowlingController;
+
+	@Autowired
+	private Printer printer;
 	
 	public void run(String path) {
 		try {
@@ -34,18 +38,13 @@ public class CommandLineInputController {
 				System.out.println("InputStream: " + is);
 				List<PlayerMoves> playersMoves = bowlingController.parseFile(is);
 				System.out.println("playersMoves: " + playersMoves);
-				/*
-				 * The players Moves should be show
-				 */
-				/*
-				 * The players Scores should be show
-				 */
 
 				/*
 				 * TODO: moves.toSystemOut().
 				 * 
 				 * TODO: score.toSystemOut().
 				 */
+				printer.printGame(playersMoves);
 				
 			} catch (Throwable e) {
 				System.out.println(e.getMessage());

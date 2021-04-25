@@ -3,6 +3,7 @@ package com.jobsity.bowling.game.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.jobsity.bowling.game.model.states.FrameState;
 import com.jobsity.bowling.game.model.states.Normal;
@@ -116,6 +117,19 @@ public class Frame {
 			return Integer.parseInt(value);
 		} else {
 			return 0;
+		}
+	}
+	
+	public String playsToString() {
+		if (this.getState().getClass().equals(Strike.class)) {
+			return "\tX";
+		} else 	if (this.getState().getClass().equals(Spare.class)) {
+			return this.getFirstValue() + "\t/";
+		} else {
+			List<String> a = play.stream().map(p -> {
+				return (p);
+			}).collect(Collectors.toList());
+			return String.join("\t", a);
 		}
 	}
 	
