@@ -36,9 +36,6 @@ public class PlayerMoves{
 					.calculateScore(frames.get(9), null)
 				);
 		frames.get(9).calculateScore(null, null);
-		frames.forEach(f -> {
-			System.out.println("SCORE: " + f.getScore());
-		});
 		return this;
 	}
 	public String getName() {

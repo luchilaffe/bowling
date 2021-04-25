@@ -30,19 +30,14 @@ public class CommandLineInputController {
 						"Path's file must be delivered.");
 			}
 			Path correctPath = this.getCorrectPath(path);				
-			/** Process the file */
+			/* Process the file */
 			try (InputStream is = new FileInputStream(correctPath.toString())) {
 				/*
-				 * The file should be processed, and the players are created with theirs moves.
+				 * File is processed, and players are created with theirs moves.
 				 */
-				System.out.println("InputStream: " + is);
 				List<PlayerMoves> playersMoves = bowlingController.parseFile(is);
-				System.out.println("playersMoves: " + playersMoves);
-
 				/*
-				 * TODO: moves.toSystemOut().
-				 * 
-				 * TODO: score.toSystemOut().
+				 * Game should be print.
 				 */
 				printer.printGame(playersMoves);
 				
@@ -65,13 +60,13 @@ public class CommandLineInputController {
 		Path correctPath = null;
 		Path pathObject = Paths.get(path);
 		
-		/** Get absolute path */
+		/* Get absolute path */
 		String relativePathPreffix = System.getProperty("user.dir");
 		
-		/** Get relative path */
+		/* Get relative path */
 		Path relativeObj = Paths.get(String.join("/", relativePathPreffix, path));
 
-		/** Verify if exists absolute or relative path */
+		/* Verify if exists absolute or relative path */
 		if (Files.exists(pathObject)) {
 			correctPath = pathObject;
 		} else if (Files.exists(relativeObj)) {
@@ -80,7 +75,7 @@ public class CommandLineInputController {
 			throw new RuntimeException("ERROR: File does not exists");
 		}
 		
-		/** Verify if it's not a directory */
+		/* Verify if it's not a directory */
 		if (Files.isDirectory(correctPath)) {
 			throw new RuntimeException("ERROR: Directory has been provided.");
 		}

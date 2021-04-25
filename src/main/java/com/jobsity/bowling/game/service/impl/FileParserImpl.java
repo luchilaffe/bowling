@@ -31,11 +31,8 @@ public class FileParserImpl implements FileParser {
 		    /* Read csv file */
 		    Iterable<CSVRecord> records = CSVFormat.TDF.parse(reader);
 		    
-		    System.out.println("Read input file:");
 		    for (CSVRecord record : records) {
 		    	
-		        System.out.println("Player: " + record.get(0) + " Pins: " + record.get(1));
-		        
 		        if (movesValidator.validateMoveValue(record.get(1))) {
 			        if (players.containsKey(record.get(0))) {
 			        	players.get(record.get(0)).add(record.get(1));
@@ -57,8 +54,6 @@ public class FileParserImpl implements FileParser {
 		} catch (IOException ex) {
 		    ex.printStackTrace();
 		}
-		System.out.println("PARSER. Players: " + players.toString());
-		System.out.println("......");
 		return players.entrySet().stream()
 				.map((entry) -> {
 						return new PlayerMoves(entry.getKey(), entry.getValue(), movesValidator);

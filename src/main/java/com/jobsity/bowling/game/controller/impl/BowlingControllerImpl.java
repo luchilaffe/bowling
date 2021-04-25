@@ -14,12 +14,24 @@ import com.jobsity.bowling.game.controller.BowlingController;
 import com.jobsity.bowling.game.model.PlayerMoves;
 import com.jobsity.bowling.game.service.FileParser;
 
+/**
+ *{@inheritDoc}
+ * 
+ * @author Carlos Lafferriere
+ *
+ */
 @Controller
 public class BowlingControllerImpl implements BowlingController {
 
 	@Autowired
 	private FileParser parser;
 	
+	/**
+	 *{@inheritDoc}
+	 * 
+	 * @author Carlos Lafferriere
+	 *
+	 */
 	@Override
 	public List<PlayerMoves> parseFile(InputStream stream) throws Throwable {
 		try (Reader reader = new InputStreamReader(stream)) {
@@ -31,12 +43,6 @@ public class BowlingControllerImpl implements BowlingController {
 		} catch (Throwable e) {
 			throw e;
 		}
-	}
-	
-	public List<PlayerMoves> calculateScore(List<PlayerMoves> playerMoves) {
-		return playerMoves.stream()
-					.map(play -> {return play.calculateScores();})
-					.collect(Collectors.toList());		
 	}
 	
 }
