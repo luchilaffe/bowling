@@ -14,14 +14,33 @@ public class PlayerMoves{
 	
 	String name;
 	List<Frame> frames = new ArrayList<>();
+	List<Integer> scores = new ArrayList<>();
 	
 	public PlayerMoves(String name, List<String> frames, MovesValidator validator) {
 		super();
 		this.name = name;
 		this.movesValidator = validator;
 		this.frames = movesValidator.validateFrames(frames);
+		this.calculateScores();
 	}
 		
+	public PlayerMoves calculateScores(){
+		for (int i = 0; i < 8; i++) {
+			scores.add(
+					frames.get(i)
+						.calculateScore(frames.get(i+1), frames.get(i+2))
+					);
+		}
+		scores.add(
+				frames.get(8)
+					.calculateScore(frames.get(9), null)
+				);
+		frames.get(9).calculateScore(null, null);
+		frames.forEach(f -> {
+			System.out.println("SCORE: " + f.getScore());
+		});
+		return this;
+	}
 	public String getName() {
 		return name;
 	}

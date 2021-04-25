@@ -27,12 +27,16 @@ public class BowlingControllerImpl implements BowlingController {
 			List<PlayerMoves> playerMoves = parser.parse(bufferedReader);
 			return playerMoves
 					.stream()
-					//.map(player -> this.factory.create(player.getName(), player.getFrames()))
 					.collect(Collectors.toList());
 		} catch (Throwable e) {
 			throw e;
 		}
 	}
-
+	
+	public List<PlayerMoves> calculateScore(List<PlayerMoves> playerMoves) {
+		return playerMoves.stream()
+					.map(play -> {return play.calculateScores();})
+					.collect(Collectors.toList());		
+	}
 	
 }

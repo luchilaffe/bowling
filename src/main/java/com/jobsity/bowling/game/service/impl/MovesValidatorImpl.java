@@ -49,7 +49,7 @@ public class MovesValidatorImpl implements MovesValidator {
 							+ ". INFO: Nothing special. " + subList.toString());
 					currentIndex = currentIndex + 2;
 				}
-				response.add(new Frame(subList));
+				response.add(new Frame(subList, Integer.valueOf(i)));
 			} catch (Exception e) {
 				System.out.println("ERROR: Incorrect number of frames.");
 			}

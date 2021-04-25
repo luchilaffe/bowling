@@ -6,5 +6,9 @@ import java.util.List;
 import com.jobsity.bowling.game.model.PlayerMoves;
 
 public interface BowlingController {
-	public List<PlayerMoves> parseFile(InputStream stream) throws Throwable;
+	
+	List<PlayerMoves> parseFile(InputStream stream) throws Throwable;
+	
+	List<PlayerMoves> calculateScore(List<PlayerMoves> playerMoves);
+	
 }
