@@ -1,29 +1,29 @@
-package com.jobsity.bowling.service.controller.cmd;
+package com.jobsity.bowling.game.controller.cmd;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import picocli.CommandLine.Command;
-import picocli.CommandLine.Option;
+import com.jobsity.bowling.game.controller.BowlingController;
+import com.jobsity.bowling.game.model.PlayerMoves;
 
 @Component
-@Command(name = "scoregame")
 public class CommandLineInputController {
 	
-	@Option(names = { "-p", "--path" }, description = "Path's file to be process")
-	public String path;
-
+	@Autowired
+	private BowlingController bowlingController;
 	
-	public void run() {
+	public void run(String path) {
 		try {
 			if (path == null) {
 				throw new RuntimeException(
-						"Path's file must be delivered. Use '-p' or '--path' param to provide it.");
+						"Path's file must be delivered.");
 			}
 			Path correctPath = this.getCorrectPath(path);				
 			/** Process the file */
@@ -31,7 +31,9 @@ public class CommandLineInputController {
 				/**
 				 * TODO: Here the file should be processed 
 				 */
-				// System.out.println("InputStream: " + is);
+				System.out.println("InputStream: " + is);
+				List<PlayerMoves> playersMoves = bowlingController.parseFile(is);
+				System.out.println("playersMoves: " + playersMoves);
 				
 			} catch (Throwable e) {
 				System.out.println(e.getMessage());
