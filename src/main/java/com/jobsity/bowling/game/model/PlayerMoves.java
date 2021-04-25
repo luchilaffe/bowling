@@ -15,34 +15,39 @@ public class PlayerMoves{
 	}
 	
 	private List<Frame> convertFrames(List<String> frames){
-		/* TODO: Convertir los Frames */
+		List<Frame> response = new ArrayList<>();
+
 		int currentIndex = 0;
-		List<Frame> response = null;
 		for (int i = 0; i < 10; i++) {
+			List<String> subList;
 			if ((frames.get(currentIndex).equals("X") || frames.get(currentIndex).equals("10")) && i == 10 ) {
-				System.out.println("No.: " + i + ". INFO: Strike en la 10ma. " 
-						+ frames.subList(currentIndex, currentIndex+3).toString());
-				// TODO: Frame currentFrame = new Frame();
+				subList = frames.subList(currentIndex, currentIndex+3);
+				System.out.println("No.: " + i 
+						+ ". INFO: Strike en la 10ma. " + subList.toString());
 				currentIndex = currentIndex + 3;
 				
 			} else if (frames.get(currentIndex).equals("X") || frames.get(currentIndex).equals("10")) {
-				System.out.println("No.: " + i + ". INFO: Strike. " 
-						+ frames.subList(currentIndex, currentIndex+1).toString());
+				subList = frames.subList(currentIndex, currentIndex+1);
+				System.out.println("No.: " + i 
+						+ ". INFO: Strike. " + subList.toString());
 				currentIndex = currentIndex + 1;
 				
 			} else if (Integer.parseInt(frames.get(currentIndex)) 
 					+ Integer.parseInt(frames.get(currentIndex +1)) 
 					== 10) {
-				System.out.println("No.: " + i + ". INFO: Spare. " 
-						+ frames.subList(currentIndex, currentIndex+2).toString());
+				subList = frames.subList(currentIndex, currentIndex+2);
+				System.out.println("No.: " + i 
+						+ ". INFO: Spare. " + subList.toString());
 				currentIndex = currentIndex + 2;
 				
 			} else {
-				System.out.println("No.: " + i + ". INFO: Nothing special. " 
-						+ frames.subList(currentIndex, currentIndex+2).toString());
+				subList = frames.subList(currentIndex, currentIndex+2);
+				System.out.println("No.: " + i 
+						+ ". INFO: Nothing special. " + subList.toString());
 				currentIndex = currentIndex + 2;
 			}
 			/* TODO: validar */
+			response.add(new Frame(subList));
 		}
 		
 		return response;
