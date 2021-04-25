@@ -28,12 +28,19 @@ public class CommandLineInputController {
 			Path correctPath = this.getCorrectPath(path);				
 			/** Process the file */
 			try (InputStream is = new FileInputStream(correctPath.toString())) {
-				/**
-				 * TODO: Here the file should be processed 
+				/*
+				 * The file should be processed 
 				 */
 				System.out.println("InputStream: " + is);
 				List<PlayerMoves> playersMoves = bowlingController.parseFile(is);
 				System.out.println("playersMoves: " + playersMoves);
+				/*
+				 * The frame points should be calculated
+				 */
+				
+				/*
+				 * The players moves should be show
+				 */
 				
 			} catch (Throwable e) {
 				System.out.println(e.getMessage());

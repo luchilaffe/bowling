@@ -36,7 +36,7 @@ public class FileParserImpl implements FileParser {
 		    	
 		        System.out.println("Player: " + record.get(0) + " Pins: " + record.get(1));
 		        
-		        if (movesValidator.validateMove(record.get(1))) {
+		        if (movesValidator.validateMoveValue(record.get(1))) {
 			        if (players.containsKey(record.get(0))) {
 			        	players.get(record.get(0)).add(record.get(1));
 			        } else {
@@ -45,7 +45,9 @@ public class FileParserImpl implements FileParser {
 			        	players.put(record.get(0), pins);
 			        }
 		        } else {
-		        	System.out.println("ERROR: Invalid input. Some pin value is not correct.");
+		        	long currentLine = record.getParser().getCurrentLineNumber();
+		        	System.out.println("ERROR: Invalid input. Value: " + record.get(1) 
+		        		+ " is not correct in line: " + currentLine);
 		        	throw new RuntimeException();
 		        }
 		    }
@@ -59,7 +61,7 @@ public class FileParserImpl implements FileParser {
 		System.out.println("......");
 		return players.entrySet().stream()
 				.map((entry) -> {
-						return new PlayerMoves(entry.getKey(), entry.getValue());
+						return new PlayerMoves(entry.getKey(), entry.getValue(), movesValidator);
 				}).collect(Collectors.toList());
 	}
 	

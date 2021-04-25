@@ -2,10 +2,11 @@ package com.jobsity.bowling.game.model.states;
 
 import com.jobsity.bowling.game.model.Frame;
 
-public class Strike extends FrameState{
+public class Spare extends FrameState{
 	
-	public Strike(Frame frame) {
+	
+	public Spare(Frame frame) {
 		super(frame);
 	}
-	
+
 }
