@@ -3,13 +3,18 @@ package com.jobsity.bowling.game.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jobsity.bowling.game.factory.FrameFactory;
 import com.jobsity.bowling.game.model.Frame;
 import com.jobsity.bowling.game.service.MovesValidator;
 
 @Service
 public class MovesValidatorImpl implements MovesValidator {
+	
+	@Autowired
+	FrameFactory frameFactory;
 
 	public List<Frame> validateFrames(List<String> frames){
 		List<Frame> response = new ArrayList<>();
@@ -38,7 +43,7 @@ public class MovesValidatorImpl implements MovesValidator {
 					subList = frames.subList(currentIndex, currentIndex+2);
 					currentIndex = currentIndex + 2;
 				}
-				response.add(new Frame(subList, Integer.valueOf(i)));
+				response.add(frameFactory.createFrame(subList, Integer.valueOf(i)));
 			} catch (Exception e) {
 				System.out.println("ERROR: Incorrect number of frames.");
 			}

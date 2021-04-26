@@ -13,6 +13,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jobsity.bowling.game.factory.PlayerMovesFactory;
 import com.jobsity.bowling.game.model.PlayerMoves;
 import com.jobsity.bowling.game.service.FileParser;
 import com.jobsity.bowling.game.service.MovesValidator;
@@ -22,6 +23,9 @@ public class FileParserImpl implements FileParser {
 	
 	@Autowired
 	MovesValidator movesValidator;
+	
+	@Autowired
+	PlayerMovesFactory playerMovesFactory;
 
 	@Override
 	public List<PlayerMoves> parse(BufferedReader reader) throws RuntimeException {
@@ -56,7 +60,7 @@ public class FileParserImpl implements FileParser {
 		}
 		return players.entrySet().stream()
 				.map((entry) -> {
-						return new PlayerMoves(entry.getKey(), entry.getValue(), movesValidator);
+						return playerMovesFactory.createPlayerMoves(entry.getKey(), entry.getValue(), movesValidator);
 				}).collect(Collectors.toList());
 	}
 	
