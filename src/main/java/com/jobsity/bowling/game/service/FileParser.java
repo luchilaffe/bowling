@@ -7,6 +7,6 @@ import com.jobsity.bowling.game.model.PlayerMoves;
 
 public interface FileParser {
 
-	List<PlayerMoves> parse(BufferedReader reader);
-	
+    List<PlayerMoves> parse(BufferedReader reader);
+
 }

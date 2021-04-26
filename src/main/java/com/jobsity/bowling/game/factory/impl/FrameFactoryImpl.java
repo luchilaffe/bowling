@@ -11,9 +11,9 @@ import com.jobsity.bowling.game.model.impl.FrameImpl;
 @Service
 public class FrameFactoryImpl implements FrameFactory {
 
-	@Override
-	public Frame createFrame(List<String> subFrame, Integer order) {
-		return new FrameImpl(subFrame, order);
-	}
+    @Override
+    public Frame createFrame(List<String> subFrame, Integer order) {
+        return new FrameImpl(subFrame, order);
+    }
 
 }

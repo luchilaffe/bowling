@@ -7,9 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 class BowlingServiceApplicationTests {
 
-	@Test
-	@DisplayName("Test Bowling Service")
-	void contextLoads() {
-	}
+    @Test
+    @DisplayName("Test Bowling Service")
+    void contextLoads() {}
 
 }

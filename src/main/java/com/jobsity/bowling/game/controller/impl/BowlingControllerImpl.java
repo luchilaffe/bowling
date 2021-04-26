@@ -15,7 +15,7 @@ import com.jobsity.bowling.game.model.PlayerMoves;
 import com.jobsity.bowling.game.service.FileParser;
 
 /**
- *{@inheritDoc}
+ * {@inheritDoc}
  * 
  * @author Carlos Lafferriere
  *
@@ -23,30 +23,28 @@ import com.jobsity.bowling.game.service.FileParser;
 @Controller
 public class BowlingControllerImpl implements BowlingController {
 
-	private final FileParser parser;
-	
-	@Autowired
-	public BowlingControllerImpl(FileParser parser) {
-		this.parser = parser;
-	}
-	
-	/**
-	 *{@inheritDoc}
-	 * 
-	 * @author Carlos Lafferriere
-	 *
-	 */
-	@Override
-	public List<PlayerMoves> parseFile(InputStream stream) throws Throwable {
-		try (Reader reader = new InputStreamReader(stream)) {
-			BufferedReader bufferedReader = new BufferedReader(reader);
-			List<PlayerMoves> playerMoves = parser.parse(bufferedReader);
-			return playerMoves
-					.stream()
-					.collect(Collectors.toList());
-		} catch (Throwable e) {
-			throw e;
-		}
-	}
-	
+    private final FileParser parser;
+
+    @Autowired
+    public BowlingControllerImpl(FileParser parser) {
+        this.parser = parser;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @author Carlos Lafferriere
+     *
+     */
+    @Override
+    public List<PlayerMoves> parseFile(InputStream stream) throws Throwable {
+        try (Reader reader = new InputStreamReader(stream)) {
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            List<PlayerMoves> playerMoves = parser.parse(bufferedReader);
+            return playerMoves.stream().collect(Collectors.toList());
+        } catch (Throwable e) {
+            throw e;
+        }
+    }
+
 }

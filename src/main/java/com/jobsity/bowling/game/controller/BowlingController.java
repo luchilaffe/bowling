@@ -12,15 +12,15 @@ import com.jobsity.bowling.game.model.PlayerMoves;
  *
  */
 public interface BowlingController {
-	
-	/**
-	 * Parse a file that contains a bowling game, and return it as list of players
-	 * with theirs moves.
-	 * 
-	 * @param stream
-	 * @return a list of players with theirs moves
-	 * @throws Throwable
-	 */
-	List<PlayerMoves> parseFile(InputStream stream) throws Throwable;
-	
+
+    /**
+     * Parse a file that contains a bowling game, and return it as list of players with theirs
+     * moves.
+     * 
+     * @param stream
+     * @return a list of players with theirs moves
+     * @throws Throwable
+     */
+    List<PlayerMoves> parseFile(InputStream stream) throws Throwable;
+
 }

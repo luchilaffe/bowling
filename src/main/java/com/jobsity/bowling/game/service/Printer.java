@@ -5,7 +5,7 @@ import java.util.List;
 import com.jobsity.bowling.game.model.PlayerMoves;
 
 public interface Printer {
-	
-	void printGame(List<PlayerMoves> playerMoves);
+
+    void printGame(List<PlayerMoves> playerMoves);
 
 }

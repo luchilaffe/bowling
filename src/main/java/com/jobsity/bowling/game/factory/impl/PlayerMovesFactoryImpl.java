@@ -12,9 +12,10 @@ import com.jobsity.bowling.game.service.MovesValidator;
 @Service
 public class PlayerMovesFactoryImpl implements PlayerMovesFactory {
 
-	@Override
-	public PlayerMoves createPlayerMoves(String name, List<String> frames, MovesValidator validator) {
-		return new PlayerMovesImpl(name, frames, validator);
-	}
+    @Override
+    public PlayerMoves createPlayerMoves(String name, List<String> frames,
+            MovesValidator validator) {
+        return new PlayerMovesImpl(name, frames, validator);
+    }
 
 }

@@ -7,6 +7,6 @@ import com.jobsity.bowling.game.service.MovesValidator;
 
 public interface PlayerMovesFactory {
 
-	PlayerMoves createPlayerMoves(String name, List<String> frames, MovesValidator validator);
+    PlayerMoves createPlayerMoves(String name, List<String> frames, MovesValidator validator);
 
 }
