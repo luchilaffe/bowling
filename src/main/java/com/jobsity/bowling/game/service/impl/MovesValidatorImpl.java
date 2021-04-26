@@ -27,10 +27,10 @@ public class MovesValidatorImpl implements MovesValidator {
 		for (int i = 0; i < 10; i++) {
 			List<String> subList;
 			try {
-				if ((frames.get(currentIndex).equals("X") && i == 9 )) {
+				if (isTenthStrike(frames.get(currentIndex), i)) {
 					subList = frames.subList(currentIndex, currentIndex+3);
 					currentIndex = currentIndex + 3;
-				} else if (frames.get(currentIndex).equals("X") || frames.get(currentIndex).equals("10")) {
+				} else if (isStrike(frames.get(currentIndex))) {
 					subList = frames.subList(currentIndex, currentIndex+1);
 					currentIndex = currentIndex + 1;
 					
@@ -72,6 +72,14 @@ public class MovesValidatorImpl implements MovesValidator {
 	
 	private Boolean hasFault(String a, String b) {
 		return a.equals("F") || b.equals("F");
+	}
+
+	private Boolean isStrike(String a) {
+		return a.equals("X") || a.equals("10");
+	}
+	
+	private Boolean isTenthStrike(String a, Integer order) {
+		return (a.equals("X") || a.equals("10")) && order == 9;
 	}
 
 }

@@ -33,27 +33,27 @@ public class PrinterImpl implements Printer{
 	}
 	
 	private void printHeader(Integer movesQuantity) {
-		System.out.print("Frame\t\t");
+		System.out.print("Frame");
 		for (int i=1; i<=movesQuantity; i++) {
-			System.out.print(i+"\t\t");
+			System.out.print("\t\t"+i);
 		}
 		System.out.println("");		
 	}
 	
 	private void printFrames(PlayerMoves play) {
-		System.out.print("Pinfalls\t");
+		System.out.print("Pinfalls");
 		for (int i=0; i<play.getFrames().size(); i++) {
-			System.out.print(play.getFrames().get(i).playsToString() + "\t");
+			System.out.print("\t" + play.getFrames().get(i).playsToString());
 		}
-		System.out.println("");
+		System.out.print("\n");
 	}
 	
 	private void printScores(PlayerMoves play) {
-		System.out.print("Score\t\t");
+		System.out.print("Score");
 		Integer sum = 0;
 		for (int i=0; i<play.getFrames().size(); i++) {
 			sum = sum + play.getFrames().get(i).getScore();
-			System.out.print(sum + "\t\t");
+			System.out.print("\t\t" + sum);
 		}
 		System.out.println("");
 	}
