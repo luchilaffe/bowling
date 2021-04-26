@@ -29,26 +29,35 @@ class IntegrationTest {
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	private final PrintStream originalOut = System.out;
 	private final PrintStream originalErr = System.err;
+	
+	private final String pathAllStrikes = "/src/test/resources/strikes.txt";
+	private final String pathAllZeros = "/src/test/resources/zeros.txt";
+	private final String pathRandom = "/src/test/resources/random.txt";
+	
 	private final String frame = "Frame\t\t1\t\t2\t\t3\t\t4\t\t5\t\t6\t\t7\t\t8\t\t9\t\t10\n";
 	private final String jeff = "Jeff\n";
-	private final String pinfallsStrikes = 
-			"Pinfalls\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t10\t10\t10\n";
-	private final String pinfallsZeros = 
-			"Pinfalls"
+
+	private final String pinfallsStrikes = "Pinfalls"
+			+ "\t\tX\t\tX\t\tX\t\tX\t\tX"
+			+ "\t\tX\t\tX\t\tX\t\tX\tX\tX\tX\n";
+	private final String pinfallsZeros = "Pinfalls"
 			+ "\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0"
 			+ "\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0"
 			+ "\n";
-	private final String pinfallsRandom = 
-			"Pinfalls"
+	private final String pinfallsRandom = "Pinfalls"
 			+ "\t3\t2\t3\t2\t3\t2\t3\t2\t3\t2"
 			+ "\t3\t2\t3\t2\t3\t2\t3\t2\t3\t2"
 			+ "\n";
-	private final String scoreAllStrikes = 
-			"Score\t\t30\t\t60\t\t90\t\t120\t\t150\t\t180\t\t210\t\t240\t\t270\t\t300\n";
-	private final String scoreAllZeros = 
-			"Score\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\n";
-	private final String scoreRandom = 
-			"Score\t\t5\t\t10\t\t15\t\t20\t\t25\t\t30\t\t35\t\t40\t\t45\t\t50\n";
+
+	private final String scoreAllStrikes = "Score"
+			+ "\t\t30\t\t60\t\t90\t\t120\t\t150"
+			+ "\t\t180\t\t210\t\t240\t\t270\t\t300\n";
+	private final String scoreAllZeros = "Score"
+			+ "\t\t0\t\t0\t\t0\t\t0\t\t0"
+			+ "\t\t0\t\t0\t\t0\t\t0\t\t0\n";
+	private final String scoreRandom = "Score"
+			+ "\t\t5\t\t10\t\t15\t\t20\t\t25"
+			+ "\t\t30\t\t35\t\t40\t\t45\t\t50\n";
 	
 	@BeforeEach
 	public void setUpStreams() {
@@ -73,7 +82,7 @@ class IntegrationTest {
     	
     	CommandLineInputController cmd = new CommandLineInputController(bowlingController, printer);
 		
-    	String path = "/src/test/resources/strikes.txt";
+    	String path = pathAllStrikes;
 		cmd.run(path);
 				
 		try (PrintStream ps = new PrintStream(outContent, true)) {
@@ -96,7 +105,7 @@ class IntegrationTest {
     	
     	CommandLineInputController cmd = new CommandLineInputController(bowlingController, printer);
 		
-    	String path = "/src/test/resources/zeros.txt";
+    	String path = pathAllZeros;
 		cmd.run(path);
 				
 		try (PrintStream ps = new PrintStream(outContent, true)) {
@@ -119,7 +128,7 @@ class IntegrationTest {
     	
     	CommandLineInputController cmd = new CommandLineInputController(bowlingController, printer);
 		
-    	String path = "/src/test/resources/random.txt";
+    	String path = pathRandom;
 		cmd.run(path);
 				
 		try (PrintStream ps = new PrintStream(outContent, true)) {

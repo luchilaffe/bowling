@@ -137,15 +137,23 @@ public class FrameImpl implements Frame {
 		}
 	}
 	
+	private String getStringValue(String value) {
+		if (value.equals("X") || value.equals("10")) {
+			return "X";
+		} else {
+			return value;
+		}
+	}
+	
 	@Override
 	public String playsToString() {
 		if (this.getState().getClass().equals(Strike.class)) {
-			return "\tX";
+			return "\t" + getStringValue(this.getFirstValue().toString());
 		} else 	if (this.getState().getClass().equals(Spare.class)) {
 			return this.getFirstValue() + "\t/";
 		} else {
 			List<String> a = play.stream().map(p -> {
-				return (p);
+				return (getStringValue(p));
 			}).collect(Collectors.toList());
 			return String.join("\t", a);
 		}
