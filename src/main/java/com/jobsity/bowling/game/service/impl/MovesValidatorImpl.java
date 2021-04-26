@@ -2,10 +2,8 @@ package com.jobsity.bowling.game.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.jobsity.bowling.game.factory.FrameFactory;
 import com.jobsity.bowling.game.model.Frame;
 import com.jobsity.bowling.game.service.MovesValidator;
@@ -20,6 +18,7 @@ public class MovesValidatorImpl implements MovesValidator {
         this.frameFactory = frameFactory;
     }
 
+    @Override
     public List<Frame> validateFrames(List<String> frames) {
         List<Frame> response = new ArrayList<>();
 
@@ -27,21 +26,12 @@ public class MovesValidatorImpl implements MovesValidator {
         for (int i = 0; i < 10; i++) {
             List<String> subList;
             try {
-                if (isTenthStrike(frames.get(currentIndex), i)) {
+                if (Boolean.TRUE.equals(isTenthStrike(frames.get(currentIndex), i))) {
                     subList = frames.subList(currentIndex, currentIndex + 3);
                     currentIndex = currentIndex + 3;
-                } else if (isStrike(frames.get(currentIndex))) {
+                } else if (Boolean.TRUE.equals(isStrike(frames.get(currentIndex)))) {
                     subList = frames.subList(currentIndex, currentIndex + 1);
                     currentIndex = currentIndex + 1;
-
-                } else if (!hasFault(frames.get(currentIndex), frames.get(currentIndex + 1))
-                        && sumIsTen(frames.get(currentIndex), frames.get(currentIndex + 1))) {
-                    subList = frames.subList(currentIndex, currentIndex + 2);
-                    currentIndex = currentIndex + 2;
-
-                } else if (hasFault(frames.get(currentIndex), frames.get(currentIndex + 1))) {
-                    subList = frames.subList(currentIndex, currentIndex + 2);
-                    currentIndex = currentIndex + 2;
 
                 } else {
                     subList = frames.subList(currentIndex, currentIndex + 2);
@@ -62,8 +52,8 @@ public class MovesValidatorImpl implements MovesValidator {
 
     @Override
     public Boolean validateMoveValue(String move) {
-        return (move.equals("F") || move.equals("X") || move.equals("/")
-                || (Integer.parseInt(move) >= 0 && Integer.parseInt(move) <= 10));
+        return null != move && ((move.equals("F") || move.equals("X") || move.equals("/")
+                || (Integer.parseInt(move) >= 0 && Integer.parseInt(move) <= 10)));
     }
 
     private Boolean sumIsTen(String a, String b) {

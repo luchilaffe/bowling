@@ -1,9 +1,7 @@
 package com.jobsity.bowling.game.service.impl;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import com.jobsity.bowling.game.model.PlayerMoves;
 import com.jobsity.bowling.game.service.Printer;
 
@@ -50,10 +48,10 @@ public class PrinterImpl implements Printer {
 
     private void printScores(PlayerMoves play) {
         System.out.print("Score");
-        Integer sum = 0;
+        Integer summedScores = 0;
         for (int i = 0; i < play.getFrames().size(); i++) {
-            sum = sum + play.getFrames().get(i).getScore();
-            System.out.print("\t\t" + sum);
+            summedScores = summedScores + play.getFrames().get(i).getScore();
+            System.out.print("\t\t" + summedScores);
         }
         System.out.println("");
     }

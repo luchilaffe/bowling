@@ -7,12 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.jobsity.bowling.game.factory.PlayerMovesFactory;
 import com.jobsity.bowling.game.model.PlayerMoves;
 import com.jobsity.bowling.game.service.FileParser;
@@ -41,7 +39,7 @@ public class FileParserImpl implements FileParser {
 
             for (CSVRecord record : records) {
 
-                if (movesValidator.validateMoveValue(record.get(1))) {
+                if (Boolean.TRUE.equals(movesValidator.validateMoveValue(record.get(1)))) {
                     if (players.containsKey(record.get(0))) {
                         players.get(record.get(0)).add(record.get(1));
                     } else {
