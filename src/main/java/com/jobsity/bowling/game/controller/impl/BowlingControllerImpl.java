@@ -23,8 +23,12 @@ import com.jobsity.bowling.game.service.FileParser;
 @Controller
 public class BowlingControllerImpl implements BowlingController {
 
+	private final FileParser parser;
+	
 	@Autowired
-	private FileParser parser;
+	public BowlingControllerImpl(FileParser parser) {
+		this.parser = parser;
+	}
 	
 	/**
 	 *{@inheritDoc}

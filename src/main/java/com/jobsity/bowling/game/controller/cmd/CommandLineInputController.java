@@ -17,11 +17,15 @@ import com.jobsity.bowling.game.service.Printer;
 @Component
 public class CommandLineInputController {
 	
-	@Autowired
 	private BowlingController bowlingController;
 
-	@Autowired
 	private Printer printer;
+	
+	@Autowired
+	public CommandLineInputController(BowlingController bowlingController, Printer printer) {
+		this.bowlingController = bowlingController;
+		this.printer = printer;
+	}
 	
 	public void run(String path) {
 		try {

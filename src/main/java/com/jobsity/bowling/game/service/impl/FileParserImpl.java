@@ -21,11 +21,15 @@ import com.jobsity.bowling.game.service.MovesValidator;
 @Service
 public class FileParserImpl implements FileParser {
 	
-	@Autowired
-	MovesValidator movesValidator;
+	private final MovesValidator movesValidator;
+	
+	private final PlayerMovesFactory playerMovesFactory;
 	
 	@Autowired
-	PlayerMovesFactory playerMovesFactory;
+	public FileParserImpl(MovesValidator movesValidator, PlayerMovesFactory playerMovesFactory) {
+		this.movesValidator = movesValidator;
+		this.playerMovesFactory = playerMovesFactory;
+	}
 
 	@Override
 	public List<PlayerMoves> parse(BufferedReader reader) throws RuntimeException {

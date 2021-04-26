@@ -13,8 +13,12 @@ import com.jobsity.bowling.game.service.MovesValidator;
 @Service
 public class MovesValidatorImpl implements MovesValidator {
 	
+	private final FrameFactory frameFactory;
+	
 	@Autowired
-	FrameFactory frameFactory;
+	public MovesValidatorImpl(FrameFactory frameFactory) {
+		this.frameFactory = frameFactory;
+	}
 
 	public List<Frame> validateFrames(List<String> frames){
 		List<Frame> response = new ArrayList<>();
