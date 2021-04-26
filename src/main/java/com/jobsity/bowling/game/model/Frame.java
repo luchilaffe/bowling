@@ -18,4 +18,12 @@ public interface Frame {
 
 	Integer getSecondValue();
 	
+	Integer getThirdValue();
+	
+	Integer getSumValue(String a, String b);
+	
+	Integer getNextTwoValues(Frame next, Frame second);
+	
+	Integer integerValue(String value);
+	
 }
