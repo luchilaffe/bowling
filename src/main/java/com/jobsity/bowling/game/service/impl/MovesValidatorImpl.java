@@ -34,13 +34,13 @@ public class MovesValidatorImpl implements MovesValidator {
 					subList = frames.subList(currentIndex, currentIndex+1);
 					currentIndex = currentIndex + 1;
 					
-				} else if ( !hasFault(frames.get(currentIndex), frames.get(currentIndex +1) )
-						&& sumIsTen(frames.get(currentIndex), frames.get(currentIndex +1) ) ) {
-					subList = frames.subList(currentIndex, currentIndex+2);
+				} else if ( !hasFault(frames.get(currentIndex), frames.get(currentIndex + 1) )
+						&& sumIsTen(frames.get(currentIndex), frames.get(currentIndex + 1) ) ) {
+					subList = frames.subList(currentIndex, currentIndex + 2);
 					currentIndex = currentIndex + 2;
 					
-				} else if ( hasFault(frames.get(currentIndex), frames.get(currentIndex +1) )) {
-					subList = frames.subList(currentIndex, currentIndex+2);
+				} else if ( hasFault(frames.get(currentIndex), frames.get(currentIndex + 1) )) {
+					subList = frames.subList(currentIndex, currentIndex + 2);
 					currentIndex = currentIndex + 2;
 					
 				} else {

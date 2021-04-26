@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jobsity.bowling</groupId>
-	<artifactId>service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>bowling</artifactId>
+	<version>1.0</version>
 	<name>Bowling Service</name>
 	<description>Jobsity - Bowling</description>
 	<properties>
@@ -27,16 +27,6 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>info.picocli</groupId>
-			<artifactId>picocli</artifactId>
-			<version>4.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
